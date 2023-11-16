@@ -1,3 +1,19 @@
 <div *ngIf="isLoaded">
- <h1 *ngFor="let dep of message; index as i">{{dep.nom_departement}}</h1>
-</div>
+    <div class="form-group">
+        <label for="departementSelect">Sélectionnez un département :</label>
+        <select id="departementSelect" class="form-control" [(ngModel)]="selectedDepartement">
+          <option *ngFor="let departement of message" [value]="departement.num_departement">{{ departement.nom_departement }}</option>
+        </select>
+      </div>
+    <div class="form-group">
+        <label for="datePicker">Sélectionnez une date :</label>
+        <input
+          id="datePicker"
+          type="date"
+          class="form-control"
+          placeholder="Sélectionnez une date"
+          [(ngModel)]="selectedDate"
+        />
+    </div>
+    <button type="button" (click)="onClick()"></button>
+</div> 

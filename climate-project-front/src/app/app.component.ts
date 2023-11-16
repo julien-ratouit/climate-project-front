@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RecupMeteoService } from './services/recup-meteo.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,8 @@ export class AppComponent {
 
   isLoaded = false;
   message: any;
+  selectedDate: string = "";
+  selectedDepartement: string = ""
 
   constructor(private meteoService: RecupMeteoService) {}
 
@@ -20,5 +23,9 @@ export class AppComponent {
       this.message = rep;
       this.isLoaded = true;
     });
+  }
+
+  onClick() {
+
   }
 }

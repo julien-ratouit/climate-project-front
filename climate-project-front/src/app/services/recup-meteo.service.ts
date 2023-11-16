@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class RecupMeteoService {
   private url = "http://127.0.0.1:5000/";
-  private endpoint = "departement/getAll";
+  private endpoint = "departement/getall";
 
   constructor(private http: HttpClient) {}
 

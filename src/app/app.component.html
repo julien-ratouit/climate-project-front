@@ -1,7 +1,7 @@
 <div *ngIf="isLoaded">
     <div class="form-group">
         <label for="departementSelect">Sélectionnez un département :</label>
-        <select id="departementSelect" class="form-control" [(ngModel)]="selectedDepartement">
+        <select id="departementSelect" class="form-control" >
           <option *ngFor="let departement of message" [value]="departement.num_departement">{{ departement.nom_departement }}</option>
         </select>
       </div>
@@ -12,7 +12,7 @@
           type="date"
           class="form-control"
           placeholder="Sélectionnez une date"
-          [(ngModel)]="selectedDate"
+          
         />
     </div>
     <button type="button" (click)="onClick()"></button>

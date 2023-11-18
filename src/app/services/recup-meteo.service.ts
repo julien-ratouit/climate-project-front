@@ -11,7 +11,4 @@ export class RecupMeteoService {
   
   constructor(private http: HttpClient) {}
 
-  getMeteo(){
-    return this.http.get(this.url + this.endpointdep);
-  }
 }

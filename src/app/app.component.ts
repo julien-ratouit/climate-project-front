@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RecupMeteoService } from './services/recup-meteo.service';
+import { RecupDepartementService } from './services/recup-departement.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -15,39 +15,18 @@ export class AppComponent {
   selectedDate: string = "";
   selectedDepartement: string = ""
 
-  constructor(private meteoService: RecupMeteoService) {}
+  constructor(private depService: RecupDepartementService) {}
 
   ngOnInit(): void {
-    this.meteoService.getMeteo().subscribe((rep: any) => {
-      console.log(rep);
-      this.message = rep;
-      this.isLoaded = true;
+    this.depService.loadDepartements().subscribe((result) => {
+      this.isLoaded = result;
+      if (result) {
+        // La requête a réussi
+        console.log('Données chargées avec succès !');
+      } else {
+        // Une erreur s'est produite
+        console.error('Erreur lors du chargement des données.');
+      }
     });
-  }
-
-  initCarte(){
-    // Sélectionnez tous les éléments avec l'attribut data-numerodepartement
-    const elements = document.querySelectorAll("[data-numerodepartement]");
-    console.log(elements);
-    
-    // Ajoutez un event listener à chaque élément
-    elements.forEach(element => {
-      element.addEventListener('click', (event) => {
-        // Le code à exécuter lorsque l'élément est cliqué
-        const numeroDepartement = element.getAttribute('data-numerodepartement');
-        this.selectedDepartement = numeroDepartement?numeroDepartement:"choisissez en un";
-        console.log(`Élément avec le numéro de département ${numeroDepartement} cliqué.`);
-      });
-    });
-  }
-
-  ngAfterViewInit() {
-    this.initCarte();
-  }
-
-
-  onClick() {
-    console.log();
-    
   }
 }

@@ -1,0 +1,49 @@
+/* date-picker.component.css */
+/* Styles spécifiques pour le composant de date picker */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    color: #007bff; /* Couleur primaire */
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #495057;
+}
+
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #495057;
+}
+
+/* carte de france */
+.carte {
+    width: 85%;
+    margin: 0 auto;
+}
+path {
+    stroke: #000000;
+    stroke-width: 1px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-opacity: .25;
+    fill: #86aae0;
+}
+g:hover path {
+    fill: #86cce0;
+}
+g path:hover {
+    fill: #86eee0;
+}

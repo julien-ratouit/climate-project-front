@@ -13,7 +13,7 @@ export class AppComponent {
   isLoaded = false;
   message: any;
   selectedDate: string = "";
-  selectedDepartement: string = ""
+  selectedDepartement: string = "";
 
   constructor(private depService: RecupDepartementService) {}
 

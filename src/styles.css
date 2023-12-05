@@ -3,9 +3,7 @@ body {
     background: linear-gradient(to right, #91fff9, #6dd7e0, #4bb1c7, #298cab, #106b8f);
     margin: 0; /* Pour enlever la marge par défaut du body */
     height: 100vh; /* Pour occuper toute la hauteur de la fenêtre */
-    display: flex; /* Pour centrer le contenu */
-    justify-content: center; /* Pour centrer le contenu */
-    text-align: center; /* Pour centrer le texte */
+
     color: white; /* Couleur du texte pour contraster avec le fond */
     font-family: Arial, sans-serif; /* Police de caractères */
   }

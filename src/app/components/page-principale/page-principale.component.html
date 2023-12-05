@@ -1,53 +1,34 @@
-<div class="canvas">
-  <div class="cloud"></div>
+
+ <div id="transition">
+    <div class="cloud"></div>
   <div class="cloud a"></div>
   <div class="cloud b"></div>
   <div class="cloud c"></div>
-  <div class="land">
-    <div class="tree"></div>
-    <div class="tree a"></div>
-    <div class="tree b"></div>
-    <div class="tree c"></div>
-    <div class="tree d"></div>
-  </div>
-   <div class="star"></div>
-  <div class="star a"></div>
-  <div class="star b"></div>
-  <div class="star c"></div>
-  <div class="star d"></div>
   <div class="wind"></div>
-<div class="swirly-wind">
+  <div class="swirly-wind">
     <span></span>
     <span></span>
     <span></span>
   </div>
-  
   <div class="swirly-wind a"></div>
   <div class="swirly-wind b"></div>
-
-  <div class="eclipse">
-    <div class="sun"></div>
-    <div class="sun a"></div>
-<!--<div class="moon"></div>
-    <div class="moon a"></div>-->
-  </div>
-    
  </div>
+ 
 
-<div class="row w-100">
+ <div id="contenue" class="row w-100">
   <div class="col text-center mt-5">
     <!-- Utilisez les classes Bootstrap pour centrer l'élément -->
     <img class="w-25 rounded mx-auto d-block" src="../assets/logo.png" alt="logo cod fun">
   
     <div class="form-group" test="test">
-      <label for="departementSelect">Sélectionnez un département :</label>
+      <label for="departementSelect" class="monText">Sélectionnez un département :</label>
       <select id="departementSelect" (ngModelChange)="changeCouleurDepuisSelect($event)" class="form-control mx-auto w-25" [(ngModel)]="selectedDepartement">
         <option *ngFor="let departement of listDepartement" [ngValue]="departement">{{ departement.nom }}</option>
       </select>
     </div>
   
     <div class="form-group">
-      <label for="datePicker">Sélectionnez une date :</label>
+      <label for="datePicker" class="monText">Sélectionnez une date :</label>
       <input
         id="datePicker"
         type="date"
@@ -58,12 +39,10 @@
     </div>
   
     <button type="button" class="btn btn-primary mx-auto" (click)="onClick()">un bouton pour les tests</button>
-  
-    <h1 class="mt-3">Vous avez sélectionné le département {{selectedDepartement.num}}</h1>
   </div>
   <div class="col carte">
     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 667 578" xml:space="preserve">
-      <a target="_blank" >
+      <!-- <a target="_blank" >
         <g class="region region-01" data-nom="Guadeloupe" data-code_insee="01">
           <path data-nom="Guadeloupe" data-numerodepartement="971" class="region-01 departement departement-971 departement-guadeloupe" d="M35.87,487.13l0.7,7.2l-4.5-1.1l-2,1.7l-5.8-0.6l-1.7-1.2l4.9,0.5l3.2-4.4L35.87,487.13z M104.87,553.63 l-4.4-1.8l-1.9,0.8l0.2,2.1l-1.9,0.3l-2.2,4.9l0.7,2.4l1.7,2.9l3.4,1.2l3.4-0.5l5.3-5l-0.4-2.5L104.87,553.63z M110.27,525.53 l-6.7-2.2l-2.4-4.2l-11.1-2.5l-2.7-5.7l-0.7-7.7l-6.2-4.7l-5.9,5.5l-0.8,2.9l1.2,4.5l3.1,1.2l-1,3.4l-2.6,1.2l-2.5,5.1l-1.9-0.2 l-1,1.9l-4.3-0.7l1.8-0.7l-3.5-3.7l-10.4-4.1l-3.4,1.6l-2.4,4.8l-0.5,3.5l3.1,9.7l0.6,12l6.3,9l0.6,2.7c3-1.2,6-2.5,9.1-3.7l5.9-6.9 l-0.4-8.7l-2.8-5.3l0.2-5.5l3.6,0.2l0.9-1.7l1.4,3.1l6.8,2l13.8-4.9L110.27,525.53z"></path>
         </g>
@@ -87,7 +66,7 @@
         <g class="region region-06" data-nom="Mayotte" data-code_insee="06">
           <path data-nom="Mayotte" data-numerodepartement="976" class="region-06 departement departement-976 departement-mayotte" d="m57.79,157.13l11.32,5.82l-3.24,7.46l-5.66,7.52l5.66,8.37l-4.04,5.7l-5.66,8.01l5.66,4.37l-7.28,4.37l-8.09-2.73l-4.04-5.04v-4.85l-3.24-6.55l7.28,3.88l4.04,1.13v-7.14l-4.85-8.43v-14.8l-8.09-2.61l-3.24-2.67v-5.76l8.9-6.79l7.28,10.19L57.79,157.13z M78.07,164.38l-5.56,3.42l4.81,5.59l3.93-4.79L78.07,164.38z"></path>
         </g>
-      </a>
+      </a> -->
       <a target="_blank" >
         <g class="region region-11" data-nom="Île-de-France" data-code_insee="11">
           <path data-nom="Paris" data-numerodepartement="75" class="region-11 departement departement-75 departement-paris" d="M641.8,78.3l-0.2,3.8l-1,2.6l-8.3-1.7l-6-0.6l-5.2,3h-4l-2.5-0.3l-0.4-0.1l-13.5-5l-3-3.8l-4.3-1.9l-0.5-0.2 l0.4-1.9l1.3-3.1l2.7-2.1l2.9-1.1l3.9,0.5h0.1l0.9-2.2l7.1-4.6l14-0.1l1.8,3.6l1.8,2.4l0.6,0.9l0.1,0.4L631,68l0.4,5.4l0.4,1.8v0.1 l-0.3,0.8l0.1,3.6l0.6-0.5l1.6-1.6l2-0.5l2-0.5L641.8,78.3z M396.8,154.7l-3.2-0.5l-2.5,1.7l3,3.5l5.3-0.1l-1.8-1.9L396.8,154.7z"></path>
@@ -237,5 +216,6 @@
         </g>
       </a>
     </svg>
-  </div>
+  </div> 
 </div>
+

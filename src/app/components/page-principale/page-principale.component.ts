@@ -33,7 +33,7 @@ export class PagePrincipaleComponent {
         // Le code à exécuter lorsque l'élément est cliqué
         const numeroDepartement = element.getAttribute('data-numerodepartement');
         console.log(`Élément avec le numéro de département ${numeroDepartement} cliqué.`);
-        // this.selectedDepartement = this.listDepartement.find(dep => dep.num.toString() == numeroDepartement)!;
+        this.selectedDepartement = this.listDepartement.find(dep => dep.num.toString() == numeroDepartement)!;
         this.changeCouleur(element);
       });
     });
@@ -56,5 +56,7 @@ export class PagePrincipaleComponent {
 
   onClick() {
     console.log();
+    document.getElementById("transition")!.style.display = "block";
+    document.getElementById("contenue")!.classList.add("animate-contenue");
   }
 }

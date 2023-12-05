@@ -10,8 +10,9 @@
 }
 
 label {
+    font-size: large;
     font-weight: bold;
-    color: #007bff; /* Couleur primaire */
+    color: #48a0ff; /* Couleur primaire */
 }
 
 input {
@@ -24,18 +25,25 @@ input {
 }
 
 select {
-    width: 100%;
     padding: 8px;
     border: 1px solid #ced4da;
     border-radius: 4px;
     background-color: #fff;
     color: #495057;
 }
+.col:first-of-type {
+    position: relative;
+    top: 0;
+    left: 0%;
+    width: 50%;
+}
 
 /* carte de france */
-.carte {
-    width: 85%;
-    margin: 0 auto;
+.col:last-of-type {
+    position: relative;
+    top: 0;
+    right: 10%;
+    width: 50%;
 }
 path {
     stroke: #000000;
@@ -53,70 +61,22 @@ g path:hover {
 }
 
 /* animation */
-.canvas {
-	width: 100%;
-	height: 600px;
-	border: 1px solid #000;
-	margin: 0 auto;
-	position: absolute;
-	animation-delay: 1s;
-	background: #e2b553;
-	animation-name: daylight;
-	animation-duration: 30s;
-	animation-iteration-count: infinite;
-	overflow: hidden;
-	animation-timing-function: linear;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  align-items: center;
+
+.animate-contenue{
+	animation-name: contenue;
+	animation-duration: 2s;
+    animation-fill-mode: forwards;
 }
-.eclipse {
-	width: 80%;
-	height: 30%;
-	/*border: 1px solid #000;*/
-	position: absolute;
-	left:10%;
-	top:70%;
-	animation-name: time;
-	animation-duration: 30s;
-	animation-iteration-count: infinite;
-	z-index: 0;
-	animation-timing-function: linear;
+
+#transition{
+    display: none;
 }
-.sun {
-	width:70px;
-	height:70px;
-	border-radius: 50%;
-	background-color: #ffa;
-	position: absolute;
-	top: -35px;
-	left: -35px;
-  z-index: -1;
+
+@keyframes contenue {
+    0% { transform: translateX(10px) }
+    100% { transform: translateX(2000px)}
 }
-.sun.a {
-  background-color: #f2f2f2;
-	bottom: -35px;
-	right: -35px;
-	left: auto;
-	top:auto;
-}
-.moon {
-	position: absolute;
-	top: -35px;
-	right: -35px;
-	width:70px;
-	height:70px;
-	border-radius: 50%;
-	background-color: #f2f2f2;
-  z-index: 0;
-}
-.moon.a {
-	bottom: -35px;
-	left: -35px;
-	top:auto;
-	right: auto;
-}
+
 .cloud {
 	width: 50px;
 	height: 45px;
@@ -126,8 +86,7 @@ g path:hover {
 	top:20px;
 	left: -20%;
 	animation-name: cloud;
-	animation-duration: 70s;
-	animation-iteration-count: infinite;
+	animation-duration: 3s;
 	z-index: 1;
 }
 .cloud::before {
@@ -152,18 +111,18 @@ g path:hover {
 }
 .cloud.a {
 	top:150px;
-	animation-duration: 55s;
+	animation-duration: 1s;
   background-color: #f2f2f2;
 }
 .cloud.b {
 	top:100px;
 	left:-15%;
-	animation-duration: 38s;
+	animation-duration: 5s;
 }
 .cloud.c {
 	top:250px;
 	left:-10%;
-	animation-duration: 25s;
+	animation-duration: 2s;
 }
 .land {
 	width: 100%;
@@ -175,8 +134,7 @@ g path:hover {
 	border-radius: 50%;
 	z-index: 1;
 	animation-name: land;
-	animation-duration: 20s;
-	animation-iteration-count: infinite;
+	animation-duration: 2s;
 }
 .land::before {
 	width: 100%;
@@ -189,8 +147,7 @@ g path:hover {
 	background-color: #96be29;
 	transform: rotate(-15deg);
 	animation-name: land1;
-	animation-duration: 20s;
-	animation-iteration-count: infinite;
+	animation-duration: 2s;
 }
 .tree {
 	width:10px;
@@ -211,8 +168,8 @@ g path:hover {
     border-color: transparent transparent #bfde3b transparent;
     z-index: 1;
   	animation-name: windy;
+    animation-fill-mode: forwards;
   	animation-duration: 5s;
-  	animation-iteration-count: infinite;
 }
 .tree::after {
 	content: '';
@@ -254,7 +211,6 @@ g path:hover {
 	left: 100px;
 	animation-name: fader;
 	animation-duration: 20s;
-	animation-iteration-count: infinite;
 }
 .star::before {
 	content: '';
@@ -267,7 +223,6 @@ g path:hover {
 	top:20px;
 	animation-name: blinker;
 	animation-duration: 20s;
-	animation-iteration-count: infinite;
 }
 .star::after {
 	content: '';
@@ -279,8 +234,7 @@ g path:hover {
 	left:-200px;
 	top:50px;
 	animation-name: blinker;
-	animation-duration: 20s;
-	animation-iteration-count: infinite;
+	animation-duration: 2s;
 }
 .star.a {
 	top:30px;
@@ -302,9 +256,9 @@ g path:hover {
 	position: absolute;
 	top:30%;
   animation-name: wind;
-	animation-duration: 12s;
-	animation-iteration-count: infinite;
+	animation-duration: 1s;
 	animation-timing-function: linear;
+    animation-fill-mode: forwards;
   z-index: 4;
 }
 .swirly-wind > span {
@@ -350,12 +304,12 @@ g path:hover {
 .swirly-wind.a {
   top:20%;
   width: 75px;
-	animation-duration: 8s;
+	animation-duration: 2s;
 }
 .swirly-wind.b {
   top:45%;
   width: 120px;
-	animation-duration: 15s;
+	animation-duration: 1s;
   height :1px;
 }
 .swirly-wind.b::before {
@@ -369,8 +323,8 @@ g path:hover {
 	position: absolute;
 	top:30%;
 	animation-name: wind;
-	animation-duration: 20s;
-	animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+	animation-duration: 2s;
 	animation-timing-function: linear;
 }
 .wind::before {

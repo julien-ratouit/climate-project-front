@@ -85,7 +85,7 @@ export class ChartsComponent implements OnChanges, OnInit {
         label: 'temperature sur l\'année ' + this.anneeDate.getFullYear() + ' dans le ' + this.dep,
         data: this.temperaturesApremidi,
         fill: false,
-        borderColor: 'rgb(75, 192, 192)',
+        borderColor: 'rgb(255, 255, 255)',
         tension: 0.1
       }]
     };

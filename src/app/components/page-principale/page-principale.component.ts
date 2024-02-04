@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Departement } from 'src/app/models/departement';
 import { RecupDepartementService } from 'src/app/services/recup-departement.service';
+import { RecupMeteoService } from 'src/app/services/recup-meteo.service';
 
 @Component({
   selector: 'app-page-principale',
@@ -10,15 +11,16 @@ import { RecupDepartementService } from 'src/app/services/recup-departement.serv
 export class PagePrincipaleComponent {
   isLoaded = false;
   listDepartement: Departement[] = this.depService.getDepartements();
-  selectedDate: string = "";
+  selectedDate: string = "2024-01-01";
   selectedDepartement!: Departement;
   svgDepartement!: Element;
 
-  constructor(private depService: RecupDepartementService) {
+  constructor(private depService: RecupDepartementService, private meteoService: RecupMeteoService) {
     this.selectedDepartement = this.listDepartement.at(1)!;
   }
 
   ngOnInit(): void {
+    this.meteoService.getMeteoDepAnnee(72, 2024);
   }
 
   initCarte(){

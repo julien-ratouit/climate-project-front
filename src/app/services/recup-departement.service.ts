@@ -7,7 +7,7 @@ import { catchError, map, of } from 'rxjs';
   providedIn: 'root'
 })
 export class RecupDepartementService {
-  private url = 'http://127.0.0.1:5000';
+  private url = 'http://127.0.0.1:8000';
   private endpointdep = '/departement/getall';
 
   private departements:Departement[] = new Array<Departement>;

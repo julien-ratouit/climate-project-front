@@ -1,0 +1,8 @@
+
+.center-canvas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 600px; /* 100% de la hauteur de la fenêtre visible */
+}

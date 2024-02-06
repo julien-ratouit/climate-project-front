@@ -1,9 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 body {
     background: linear-gradient(to right, #91fff9, #6dd7e0, #4bb1c7, #298cab, #106b8f);
+    transition: background-color 1s ease;
+    background-color: #91fff9;
     margin: 0; /* Pour enlever la marge par défaut du body */
-    height: 100vh; /* Pour occuper toute la hauteur de la fenêtre */
     overflow: hidden;
+    overflow-y: scroll;
     color: white; /* Couleur du texte pour contraster avec le fond */
     font-family: Arial, sans-serif; /* Police de caractères */
   }

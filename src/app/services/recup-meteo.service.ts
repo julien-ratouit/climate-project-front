@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, of } from 'rxjs';
+import { Weather } from '../models/weather.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +21,9 @@ export class RecupMeteoService {
   }
 
   getMeteoPrediction(dep: number, date: string){
-    return this.http.get<any[]>(this.url + "/prediction/get/" + dep + "/" + date);
+    return this.http.get<any>(this.url + "/prediction/get/" + dep + "/" + date);
   }
+  
   
 
 }

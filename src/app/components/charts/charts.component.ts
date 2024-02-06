@@ -2,6 +2,7 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 import { RecupMeteoService } from 'src/app/services/recup-meteo.service';
 import Chart, { ChartItem } from 'chart.js/auto';
 import { catchError } from 'rxjs';
+import { Weather } from 'src/app/models/weather.model';
 @Component({
   selector: 'app-charts',
   templateUrl: './charts.component.html',
@@ -14,8 +15,11 @@ export class ChartsComponent implements OnChanges, OnInit {
   temperaturesApremidi: number[] = [];
   dates: string[] = [];
   data: any;
+  weatherData!: Weather;
 
-  constructor(private meteoService: RecupMeteoService) {}
+  constructor(private meteoService: RecupMeteoService) {
+    Chart.defaults.color = '#FFF';
+  }
 
   ngOnInit() {
     this.handleAnneeChange();
@@ -51,8 +55,9 @@ export class ChartsComponent implements OnChanges, OnInit {
 
   private makePrediction(){
     this.meteoService.getMeteoPrediction(Number(this.dep), this.annee).subscribe((res: any) => {
-      console.log(res);
-      
+      this.weatherData = new Weather(res);
+      console.log(this.weatherData);
+
     });
   }
 

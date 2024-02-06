@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2  } from '@angular/core';
 import { Departement } from 'src/app/models/departement';
 import { RecupDepartementService } from 'src/app/services/recup-departement.service';
 import { RecupMeteoService } from 'src/app/services/recup-meteo.service';
@@ -15,7 +15,7 @@ export class PagePrincipaleComponent {
   selectedDepartement!: Departement;
   svgDepartement!: Element;
 
-  constructor(private depService: RecupDepartementService, private meteoService: RecupMeteoService) {
+  constructor(private depService: RecupDepartementService, private meteoService: RecupMeteoService, private renderer: Renderer2) {
     this.selectedDepartement = this.listDepartement.at(1)!;
   }
 
@@ -60,5 +60,6 @@ export class PagePrincipaleComponent {
     console.log();
     document.getElementById("transition")!.style.display = "block";
     document.getElementById("contenue")!.classList.add("animate-contenue");
+    this.renderer.setStyle(document.body, 'background', '#106b8f');
   }
 }

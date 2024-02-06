@@ -1,4 +1,45 @@
-<div class="col-12 center-canvas">
+<div class="col-12">
+    <div class="col-12 center-canvas mb-3">
         <canvas id="myChart" class=""></canvas>
-        <button type="button" class="btn btn-primary mx-auto" onclick="window.location.href='http://127.0.0.1:4200/';">revenir au menu</button>
+        <button type="button" class=" btn btn-primary mx-auto marge-top"
+            onclick="window.location.href='http://127.0.0.1:4200/';">revenir au menu</button>
+    </div>
+    <div *ngIf="weatherData; else noContent" class="container text-center">
+        <div class="row marge-top">
+            <div class="col-md-6">
+                <div class="border p-3">
+                    <h2 class="mb-3">Matin</h2>
+                    <p>Humidité: {{ weatherData.matin.humidite }}</p>
+                    <p>Pluie (1h): {{ weatherData.matin.pluie_1h }}</p>
+                    <p>Pluie (3h): {{ weatherData.matin.pluie_3h }}</p>
+                    <p>Pression: {{ weatherData.matin.pression }}</p>
+                    <p>Température: {{ weatherData.matin.temperature }}</p>
+                    <p>Direction du vent: {{ weatherData.matin.vent_direction }}</p>
+                    <p>Vent moyen: {{ weatherData.matin.vent_moyen }}</p>
+                    <p>Vent rafales: {{ weatherData.matin.vent_rafales }}</p>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="border p-3">
+                    <h2 class="mb-3">Apremidi</h2>
+                    <p>Humidité: {{ weatherData.apremidi.humidite }}</p>
+                    <p>Pluie (1h): {{ weatherData.apremidi.pluie_1h }}</p>
+                    <p>Pluie (3h): {{ weatherData.apremidi.pluie_3h }}</p>
+                    <p>Pression: {{ weatherData.apremidi.pression }}</p>
+                    <p>Température: {{ weatherData.apremidi.temperature }}</p>
+                    <p>Direction du vent: {{ weatherData.apremidi.vent_direction }}</p>
+                    <p>Vent moyen: {{ weatherData.apremidi.vent_moyen }}</p>
+                    <p>Vent rafales: {{ weatherData.apremidi.vent_rafales }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #noContent>
+        <div class="container">
+            <div class="text-center marge-top">
+                <h2>Prédiction en cours...</h2>
+            </div>
+        </div>
+    </ng-template>
 </div>

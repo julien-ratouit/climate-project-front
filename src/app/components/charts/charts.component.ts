@@ -3,6 +3,8 @@ import { RecupMeteoService } from 'src/app/services/recup-meteo.service';
 import Chart, { ChartItem } from 'chart.js/auto';
 import { catchError } from 'rxjs';
 import { Weather } from 'src/app/models/weather.model';
+import { Aprem } from 'src/app/models/aprem.model';
+import { Matin } from 'src/app/models/matin.model';
 @Component({
   selector: 'app-charts',
   templateUrl: './charts.component.html',
@@ -16,6 +18,12 @@ export class ChartsComponent implements OnChanges, OnInit {
   dates: string[] = [];
   data: any;
   weatherData!: Weather;
+  apremList: Aprem[] = []; // Liste des objets "aprem"
+  matinList: Matin[] = []; // Liste des objets "matin"
+  showAprem: boolean = false; // Indicateur pour afficher les données de l'après-midi ou du matin
+  dataList: (Aprem | Matin)[] = []; // Liste des données à afficher
+  showAll: boolean = false;
+  @Input()chart: boolean = true;
 
   constructor(private meteoService: RecupMeteoService) {
     Chart.defaults.color = '#FFF';
@@ -53,12 +61,58 @@ export class ChartsComponent implements OnChanges, OnInit {
     }
   }
 
+      // Fonction pour convertir la valeur de pluie en texte descriptif
+      getRainDescription(value: number): string {
+        if (value === 0) {
+            return "Pas de pluie";
+        } else if (value < 5) {
+            return "Un peu de pluie";
+        } else {
+            return "Très pluvieux";
+        }
+    }
+
+    // Fonction pour arrondir la température à l'entier et ajouter le symbole °C
+    formatTemperature(value: number): string {
+        return Math.round(value) + "°C";
+    }
+
+    // Fonction pour convertir la valeur du vent moyen en texte descriptif
+    getWindDescription(value: number): string {
+        if (value === 0) {
+            return "Pas de vent";
+        } else if (value < 10) {
+            return "Vent faible";
+        } else {
+            return "Vent fort";
+        }
+    }
+
   private makePrediction(){
     this.meteoService.getMeteoPrediction(Number(this.dep), this.annee).subscribe((res: any) => {
       this.weatherData = new Weather(res);
-      console.log(this.weatherData);
-
+      console.log(res);
+      this.getActivities(res);
     });
+  }
+
+  private getActivities(json: JSON){
+    this.meteoService.getActivities(json).subscribe((res: any) => {
+      console.log(res);
+      this.apremList = res.aprem;
+      this.matinList = res.matin;
+      this.dataList = this.matinList;
+    });
+
+  }
+
+  toggleDataList() {
+    this.showAprem = !this.showAprem; // Basculer entre l'affichage des données du matin et de l'après-midi
+    this.dataList = this.showAprem ? this.apremList : this.matinList; // Mettre à jour la liste affichée
+  }
+
+  expendDataList() {
+    this.showAll = !this.showAll; // Basculer entre l'affichage de toutes les données ou seulement les cinq premières
   }
 
   private handleAnneeChange() {

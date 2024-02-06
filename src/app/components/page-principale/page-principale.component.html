@@ -12,7 +12,7 @@
   </div>
   <div class="swirly-wind a"></div>
   <div class="swirly-wind b"></div>
-  <app-charts [annee]="selectedDate" [dep]="selectedDepartement.num"></app-charts>
+  <app-charts [annee]="selectedDate" [dep]="selectedDepartement.num" [chart]="chart"></app-charts>
  </div>
  
 
@@ -39,7 +39,8 @@
       />
     </div>
   
-    <button type="button" class="btn btn-primary mx-auto" (click)="onClick()">voir les recomendations</button>
+    <button *ngIf="dateIsFuture()" type="button" class="btn btn-primary mx-auto" (click)="onClick()">voir les recomendations</button>
+    <button *ngIf="!dateIsFuture()" type="button" class="btn btn-primary mx-auto" (click)="onClick()">voir le graphe de l'année</button>
   </div>
   <div class="col carte">
     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 667 578" xml:space="preserve">

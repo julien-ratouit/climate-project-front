@@ -14,6 +14,7 @@ export class PagePrincipaleComponent {
   selectedDate: string = "2024-01-01";
   selectedDepartement!: Departement;
   svgDepartement!: Element;
+  chart: boolean = true;
 
   constructor(private depService: RecupDepartementService, private meteoService: RecupMeteoService, private renderer: Renderer2) {
     this.selectedDepartement = this.listDepartement.at(1)!;
@@ -41,6 +42,18 @@ export class PagePrincipaleComponent {
     });
   }
 
+  dateIsFuture(): boolean{
+    const selectedDateTime = new Date(this.selectedDate).getTime(); // Convertir la date sélectionnée en millisecondes
+
+    // Obtenir la date actuelle
+    const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0); // Mettre à zéro les heures, minutes, secondes et millisecondes pour comparer les dates
+
+    this.chart = !(selectedDateTime > currentDate.getTime());
+
+    return selectedDateTime > currentDate.getTime(); // Renvoie true si la date sélectionnée est dans le futur, sinon false
+  }
+
   ngAfterViewInit() {
     this.initCarte();
   }
@@ -57,7 +70,6 @@ export class PagePrincipaleComponent {
   }
 
   onClick() {
-    console.log();
     document.getElementById("transition")!.style.display = "block";
     document.getElementById("contenue")!.classList.add("animate-contenue");
     this.renderer.setStyle(document.body, 'background', '#106b8f');

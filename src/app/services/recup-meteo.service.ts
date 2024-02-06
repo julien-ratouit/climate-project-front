@@ -23,7 +23,11 @@ export class RecupMeteoService {
   getMeteoPrediction(dep: number, date: string){
     return this.http.get<any>(this.url + "/prediction/get/" + dep + "/" + date);
   }
+
+  getActivities(json: any){
+    return this.http.post<any>(this.url + "/activities/getbyprediction", json);
+  }
   
-  
+
 
 }
